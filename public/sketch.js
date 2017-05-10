@@ -42,19 +42,19 @@ function setup()
   if(qualSample===0)
   {
     cor1=10;
-    cor2=190;
+    cor2=130;
     cor3=0;
   }
   if(qualSample==1)
   {
     cor1=15;
     cor2=10;
-    cor3=150;
+    cor3=100;
   }
   if(qualSample==2)
   {
-    cor1=150;
-    cor2=150;
+    cor1=110;
+    cor2=110;
     cor3=0;
   }
 
@@ -249,7 +249,6 @@ Particle.prototype.display = function(other)
     y: touchY
   }
   socket.emit('mouse',data);
-  }
 }
 
 function windowResized() 
