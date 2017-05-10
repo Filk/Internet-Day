@@ -14,6 +14,8 @@ var qualSample;
 var somPan,somTocado, somEscolhido, arraySom, som0, som1, som2, speed;
 var amplitude;
 
+var socket;
+
 function setup() 
 {
   var xx = windowWidth;
