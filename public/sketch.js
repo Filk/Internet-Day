@@ -22,6 +22,7 @@ function setup()
   var xx = windowWidth;
   var yy = windowHeight;
   createCanvas(xx, yy);
+  background(100,180,186);
   
   current = createVector(0,0);
   previous = createVector(0,0);
@@ -66,8 +67,6 @@ function setup()
 
 function draw() 
 {
-  background(100,180,186);
-  
   // If it's time for a new point
   if (millis() > next && painting) {
 
