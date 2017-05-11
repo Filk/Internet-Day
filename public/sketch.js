@@ -111,7 +111,9 @@ function draw()
     x: touchX,
     y: touchY,
     e: ellipsePrincipal,
-    d: decresce
+    d: decresce,
+    q: pmouseX,
+    w: pmouseY
   }
   socket.emit('mouse',data);
 }
@@ -125,10 +127,11 @@ function newDrawing(data)
     var teuRatoY=data.y;
   }
   
-  if (data.d>10)
+  if (data.d>5)
   {
     fill(0,data.d);
     stroke(0,data.d);
+    line(data.x, data.y, data.q, data.w);
     ellipse(teuRatoX,teuRatoY,15,15);
   }
 }
