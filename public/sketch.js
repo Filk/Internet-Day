@@ -119,13 +119,14 @@ function draw()
 //receives things from other users
 function newDrawing(data)
 {
-    fill(0, data.d);
-    line (xTemp,yTemp,data.x,data.y);
+  if (amplitude.getLevel()>0.2)
+  {
     fill(0);
     stroke(0);
     ellipse(data.x,data.y,15,15);
     var xTemp=data.x;
     var yTemp=data.y;
+  }
 }
 
 // Start it up
