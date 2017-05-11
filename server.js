@@ -22,7 +22,6 @@ app.get('/', function(request, response){
 console.log("node running on port" + (process.env.PORT || 5000));
 
 
-
 io.sockets.on('connection', newConnection);
 
 function newConnection(socket)

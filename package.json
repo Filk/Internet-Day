@@ -1,27 +1,20 @@
 {
-  "name": "Internet Day UA",
+  "name": "internetday",
   "version": "1.0.0",
-  "description": "Celebration at UA",
+  "description": "this is a collective instrument",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
-  },
-  "dependencies": {
-    "ejs": "2.5.6",
-    "express": "^4.15.2",
-    "socket.io": "^1.7.3"
-  },
-  "engines": {
-    "node": "6.10.2"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/Filk/Imaginary_Netscape"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
-    "sockets"
+    "ua",
+    "internet"
   ],
-  "author": "Filipe Lopes",  
-  "license": "MIT"
+  "author": "Filipe Lopes",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "2.5.6",
+    "express": "~4.15.2",
+    "socket.io": "~1.7.3"
+  }
 }

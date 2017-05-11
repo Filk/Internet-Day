@@ -103,13 +103,6 @@ function draw()
   speed = map(mouseY, 0.1, height, 1.5, 0.5);
   somTocado.rate(speed);
   }
-
-  var data = 
-  {
-    x: touchX,
-    y: touchY
-  }
-  socket.emit('mouse',data);
 }
 
 //receives things from other users
@@ -249,6 +242,13 @@ Particle.prototype.display = function(other)
   {
     line(this.position.x, this.position.y, other.position.x, other.position.y);
   }
+
+  var data = 
+  {
+    x: touchX,
+    y: touchY
+  }
+  socket.emit('mouse',data);
 }
 
 function windowResized() 
