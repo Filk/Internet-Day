@@ -108,10 +108,11 @@ function draw()
     somTocado.rate(speed);
   }
   
-  // //print(amplitude.volNorm);
+  //print(amplitude.volNorm);
   // if(amplitude.volNorm>0.5)
   // {
-  //   toca = true;
+  //   //toca = true;
+  //   background(100,180,186);
   // }
   
   // if (amplitude.volNorm<0.02 && toca)
@@ -148,7 +149,7 @@ function newDrawing(data)
     ellipse(teuRatoX,teuRatoY,10,10);
   }
   
-  stroke(0,data.d);
+  stroke(0);
   
   if (data.e)
   {
