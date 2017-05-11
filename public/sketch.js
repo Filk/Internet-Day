@@ -104,23 +104,10 @@ function draw()
   {
     fill(0,100);
     stroke(0,100);
-    ellipse(touchX,touchY,15,15);
+    ellipse(touchX,touchY,10,10);
     speed = map(mouseY, 0.1, height, 1.5, 0.5);
     somTocado.rate(speed);
   }
-  
-  //print(amplitude.volNorm);
-  // if(amplitude.volNorm>0.5)
-  // {
-  //   //toca = true;
-  //   background(100,180,186);
-  // }
-  
-  // if (amplitude.volNorm<0.02 && toca)
-  // {
-  //   somTocado.stop();
-  //   toca=false;
-  // }
   
   var data = 
   {
@@ -149,12 +136,13 @@ function newDrawing(data)
   {
     fill(0);
     stroke(0);
+    strokeWeight(2);
     ellipse(teuRatoX,teuRatoY,10,10);
   }
   
   if (data.e)
   {
-    strokeWeight(10);
+    strokeWeight(5);
   }
   else
   {
@@ -165,7 +153,7 @@ function newDrawing(data)
   line(teuRatoX, teuRatoY, data.q, data.w);
   fill(0, data.d);
   stroke(0, data.d);
-  ellipse(teuRatoX,teuRatoY,20,20);
+  ellipse(teuRatoX,teuRatoY,10,10);
 }
 
 // Start it up
@@ -257,11 +245,11 @@ Particle.prototype.display = function(other)
   var size = map(level, 0, 1, 0, 255);
   stroke(cor1,cor2, cor3, size*2);
   fill(cor1,cor2,cor3, size*4);
-  ellipse(this.position.x,this.position.y, 25, 25);    
+  ellipse(this.position.x,this.position.y, 15, 15);    
   // If we need to draw a line
   if (other) 
   {
-    strokeWeight(4);
+    strokeWeight(1);
     line(this.position.x, this.position.y, other.position.x, other.position.y);
   }
 }
