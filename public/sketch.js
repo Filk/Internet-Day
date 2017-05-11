@@ -11,7 +11,7 @@ var previous;
 var ellipsePrincipal=false;
 var cor1,cor2,cor3;
 var qualSample;
-var somPan,somTocado, somEscolhido, arraySom, som0, som1, som2, speed;
+var somTocado, somEscolhido, arraySom, som0, som1, som2, speed;
 var amplitude, decresce;
 
 var socket;
@@ -35,8 +35,6 @@ function setup()
   somTocado=loadSound("data/"+somEscolhido+".mp3");
   somTocado.setLoop(false);
   somTocado.setVolume(1.0);
-  somPan=random(-1,1);
-  somTocado.pan(somPan);
   speed=1;
   amplitude = new p5.Amplitude();
   
@@ -131,10 +129,11 @@ function newDrawing(data)
   {
     fill(0,data.d);
     stroke(0,data.d);
-    ellipse(teuRatoX,teuRatoY,15,15);
+    ellipse(teuRatoX,teuRatoY,20,20);
   }
   
   stroke(0);
+  strokeWeight(10);
   line(data.x, data.y, data.q, data.w);
 }
 
@@ -229,7 +228,7 @@ Particle.prototype.display = function(other)
   var size = map(level, 0, 1, 0, 255);
   stroke(cor1,cor2, cor3, size*2);
   fill(cor1,cor2,cor3, size*4);
-  ellipse(this.position.x,this.position.y, 25, 25);    
+  ellipse(this.position.x,this.position.y, 35, 35);    
   // If we need to draw a line
   if (other) 
   {
