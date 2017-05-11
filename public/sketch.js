@@ -67,6 +67,8 @@ function setup()
 
 function draw() 
 {
+  fill(100,180,186,40);
+  rect(-10,-10,width+10,height+10);
   // If it's time for a new point
   if (millis() > next && painting) {
 
@@ -117,9 +119,13 @@ function draw()
 //receives things from other users
 function newDrawing(data)
 {
-    fill(0);
-    stroke(0);
+    fill(cor1-20, cor2-20, cor3-20, data.d);
+    line (xTemp,yTemp,data.x,data.y);
+    fill(cor1, cor2, cor3, data,d);
+    stroke(cor1, cor2, cor3,data.d);
     ellipse(data.x,data.y,15,15);
+    var xTemp=data.x;
+    var yTemp=data.y;
 }
 
 // Start it up
