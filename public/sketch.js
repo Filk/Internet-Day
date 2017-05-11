@@ -121,8 +121,8 @@ function newDrawing(data)
 {
     fill(0, data.d);
     line (xTemp,yTemp,data.x,data.y);
-    fill(0, data,d);
-    stroke(0,data.d);
+    fill(0);
+    stroke(0);
     ellipse(data.x,data.y,15,15);
     var xTemp=data.x;
     var yTemp=data.y;
