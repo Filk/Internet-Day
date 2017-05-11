@@ -118,8 +118,8 @@ function draw()
 //receives things from other users
 function newDrawing(data)
 {
-    fill(0,data.d);
-    stroke(0,data.d);
+    fill(0);
+    stroke(0);
     ellipse(data.x,data.y,15,15);
 }
 
