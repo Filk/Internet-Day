@@ -119,10 +119,10 @@ function draw()
 //receives things from other users
 function newDrawing(data)
 {
-    fill(cor1-20, cor2-20, cor3-20, data.d);
+    fill(0, data.d);
     line (xTemp,yTemp,data.x,data.y);
-    fill(cor1, cor2, cor3, data,d);
-    stroke(cor1, cor2, cor3,data.d);
+    fill(0, data,d);
+    stroke(0,data.d);
     ellipse(data.x,data.y,15,15);
     var xTemp=data.x;
     var yTemp=data.y;
