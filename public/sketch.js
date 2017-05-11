@@ -131,9 +131,11 @@ function newDrawing(data)
   {
     fill(0,data.d);
     stroke(0,data.d);
-    line(data.x, data.y, data.q, data.w);
     ellipse(teuRatoX,teuRatoY,15,15);
   }
+  
+  stroke(0);
+  line(data.x, data.y, data.q, data.w);
 }
 
 // Start it up
@@ -227,7 +229,7 @@ Particle.prototype.display = function(other)
   var size = map(level, 0, 1, 0, 255);
   stroke(cor1,cor2, cor3, size*2);
   fill(cor1,cor2,cor3, size*4);
-  ellipse(this.position.x,this.position.y, 18, 18);    
+  ellipse(this.position.x,this.position.y, 25, 25);    
   // If we need to draw a line
   if (other) 
   {
