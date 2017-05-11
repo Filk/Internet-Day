@@ -13,6 +13,7 @@ var cor1,cor2,cor3;
 var qualSample;
 var somTocado, somEscolhido, arraySom, som0, som1, som2, speed;
 var amplitude, decresce;
+var toca=false;
 
 var socket;
 
@@ -97,11 +98,23 @@ function draw()
   
   if(ellipsePrincipal)
   {
-  fill(0,100);
-  stroke(0,100);
-  ellipse(touchX,touchY,15,15);
-  speed = map(mouseY, 0.1, height, 1.5, 0.5);
-  somTocado.rate(speed);
+    fill(0,100);
+    stroke(0,100);
+    ellipse(touchX,touchY,15,15);
+    speed = map(mouseY, 0.1, height, 1.5, 0.5);
+    somTocado.rate(speed);
+  }
+  
+  //print(amplitude.volNorm);
+  if(amplitude.volNorm>0.5)
+  {
+    toca = true;
+  }
+  
+  if (amplitude.volNorm<0.02 && toca)
+  {
+    somTocado.stop();
+    toca=false;
   }
   
   var data = 
@@ -162,8 +175,6 @@ function touchEnded()
 {
   painting = false;
   ellipsePrincipal=false;
-  //stop sound
-  //somTocado.stop();
 }
 
 // A Path is a list of particles
@@ -235,10 +246,11 @@ Particle.prototype.display = function(other)
   var size = map(level, 0, 1, 0, 255);
   stroke(cor1,cor2, cor3, size*2);
   fill(cor1,cor2,cor3, size*4);
-  ellipse(this.position.x,this.position.y, 30, 30);    
+  ellipse(this.position.x,this.position.y, 25, 25);    
   // If we need to draw a line
   if (other) 
   {
+    strokeWeight(4);
     line(this.position.x, this.position.y, other.position.x, other.position.y);
   }
 }
