@@ -100,7 +100,7 @@ function draw()
     paths[i].display();
   }
   
-  if(ellipsePrincipal)
+  if (ellipsePrincipal)
   {
     fill(0,100);
     stroke(0,100);
@@ -132,6 +132,8 @@ function draw()
     w: pmouseY
   }
   socket.emit('mouse',data);
+  
+  newDrawing(data);
 }
 
 //receives things from other users
@@ -265,5 +267,4 @@ function windowResized()
 {
   //corre quando se mexe no tamanho da janela
   resizeCanvas(windowWidth, windowHeight);
-  print("ccc");
 }
