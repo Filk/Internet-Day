@@ -1,8 +1,0 @@
-{
-  "name": "internet_day",
-  "description": "An instrument to create sonic netscapes",
-  "repository": "https://github.com/Filk/Imaginary_Netscape",
-  "logo": "http://node-js-sample.herokuapp.com/node.svg",
-  "keywords": ["node", "express", "heroku"],
-  "image": "heroku/nodejs"
-}
