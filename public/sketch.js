@@ -116,19 +116,11 @@ function draw()
 //receives things from other users
 function newDrawing(data)
 {
-  if (data.e)
-  {
     next = 0;
-    painting = true;
-    previous.x = data.x;
-    previous.y = data.y;
     paths.push(new Path());
-    fill(0);
-    ellipse(400,400,300,300);
     fill(0,this.lifespan);
     stroke(0,this.lifespan/2);
     ellipse(data.x,data.y,15,15);
-  }
 }
 
 // Start it up
