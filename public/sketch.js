@@ -23,6 +23,7 @@ function setup()
   var xx = windowWidth;
   var yy = windowHeight;
   createCanvas(xx, yy);
+  frameRate(30);
   background(100,180,186);
   
   current = createVector(0,0);
