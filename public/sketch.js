@@ -105,7 +105,7 @@ function draw()
   speed = map(mouseY, 0.1, height, 1.5, 0.5);
   somTocado.rate(speed);
   }
-
+  
   var data = 
   {
     x: touchX,
@@ -157,8 +157,8 @@ function newDrawing(data)
   
   if(ellipsePrincipal)
   {
-  fill(0,100);
-  stroke(0,100);
+  fill(0,this.lifespan);
+  stroke(0,this.lifespan/2);
   ellipse(data.x,data.y,15,15);
   // speed = map(mouseY, 0.1, height, 1.5, 0.5);
   // somTocado.rate(speed);
