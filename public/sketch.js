@@ -120,7 +120,7 @@ function draw()
   }
   socket.emit('mouse',data);
   
-  newDrawing(data);
+  //newDrawing(data);
 }
 
 //receives things from other users
@@ -132,13 +132,13 @@ function newDrawing(data)
     var teuRatoY=data.y;
   }
   
-  if (data.d>5)
-  {
-    fill(0);
-    stroke(0);
-    strokeWeight(2);
-    ellipse(teuRatoX,teuRatoY,10,10);
-  }
+  // if (data.d>5)
+  // {
+  //   fill(0);
+  //   stroke(0);
+  //   strokeWeight(2);
+  //   ellipse(teuRatoX,teuRatoY,10,10);
+  // }
   
   if (data.e)
   {
