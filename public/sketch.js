@@ -65,7 +65,7 @@ function setup()
 
 function draw() 
 {
-  fill(100,180,186,40);
+  fill(100,180,186,20);
   rect(-10,-10,width+10,height+10);
   // If it's time for a new point
   if (millis() > next && painting) {
@@ -129,11 +129,18 @@ function newDrawing(data)
   {
     fill(0,data.d);
     stroke(0,data.d);
-    ellipse(teuRatoX,teuRatoY,20,20);
+    ellipse(teuRatoX,teuRatoY,10,10);
   }
   
   stroke(0);
-  strokeWeight(10);
+  if (data.e)
+  {
+    strokeWeight(5);
+  }
+  else
+  {
+    strokeWeight(1); 
+  }
   line(data.x, data.y, data.q, data.w);
 }
 
@@ -228,7 +235,7 @@ Particle.prototype.display = function(other)
   var size = map(level, 0, 1, 0, 255);
   stroke(cor1,cor2, cor3, size*2);
   fill(cor1,cor2,cor3, size*4);
-  ellipse(this.position.x,this.position.y, 35, 35);    
+  ellipse(this.position.x,this.position.y, 30, 30);    
   // If we need to draw a line
   if (other) 
   {
