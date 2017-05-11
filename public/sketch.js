@@ -66,8 +66,11 @@ function setup()
 
 function draw() 
 {
-  fill(100,180,186,20);
-  rect(-10,-10,width+10,height+10);
+  // fill(100,180,186);
+  // rect(-10,-10,width+10,height+10);
+  
+  background(100,180,186);
+  
   // If it's time for a new point
   if (millis() > next && painting) {
 
@@ -105,17 +108,17 @@ function draw()
     somTocado.rate(speed);
   }
   
-  //print(amplitude.volNorm);
-  if(amplitude.volNorm>0.5)
-  {
-    toca = true;
-  }
+  // //print(amplitude.volNorm);
+  // if(amplitude.volNorm>0.5)
+  // {
+  //   toca = true;
+  // }
   
-  if (amplitude.volNorm<0.02 && toca)
-  {
-    somTocado.stop();
-    toca=false;
-  }
+  // if (amplitude.volNorm<0.02 && toca)
+  // {
+  //   somTocado.stop();
+  //   toca=false;
+  // }
   
   var data = 
   {
@@ -145,7 +148,8 @@ function newDrawing(data)
     ellipse(teuRatoX,teuRatoY,10,10);
   }
   
-  stroke(0);
+  stroke(0,data.d);
+  
   if (data.e)
   {
     strokeWeight(5);
