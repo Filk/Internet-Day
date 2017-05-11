@@ -152,8 +152,6 @@ function newDrawing(data)
     ellipse(teuRatoX,teuRatoY,10,10);
   }
   
-  stroke(0);
-  
   if (data.e)
   {
     strokeWeight(5);
@@ -162,7 +160,9 @@ function newDrawing(data)
   {
     strokeWeight(1); 
   }
-  line(data.x, data.y, data.q, data.w);
+  
+  stroke(0);
+  line(teuRatoX, teuRatoY, data.q, data.w);
 }
 
 // Start it up
