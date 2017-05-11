@@ -12,9 +12,10 @@ var ellipsePrincipal=false;
 var cor1,cor2,cor3;
 var qualSample;
 var somPan,somTocado, somEscolhido, arraySom, som0, som1, som2, speed;
-var amplitude;
+var amplitude, decresce;
 
 var socket;
+
 
 function setup() 
 {
@@ -108,7 +109,8 @@ function draw()
   {
     x: touchX,
     y: touchY,
-    e: ellipsePrincipal
+    e: ellipsePrincipal,
+    d: decresce
   }
   socket.emit('mouse',data);
 }
@@ -116,10 +118,8 @@ function draw()
 //receives things from other users
 function newDrawing(data)
 {
-    next = 0;
-    paths.push(new Path());
-    fill(0,this.lifespan);
-    stroke(0,this.lifespan/2);
+    fill(0,data.d);
+    stroke(0,data.d);
     ellipse(data.x,data.y,15,15);
 }
 
@@ -209,10 +209,11 @@ Particle.prototype.update = function()
 // Draw a line to another
 Particle.prototype.display = function(other) 
 {
-  //var level = amplitude.getLevel();
-  //var size = map(level, 0, 1, 0, 255);
-  stroke(cor1,cor2, cor3, 50*2);
-  fill(cor1,cor2,cor3, 50*4);
+  decresce=this.lifespan;
+  var level = amplitude.getLevel();
+  var size = map(level, 0, 1, 0, 255);
+  stroke(cor1,cor2, cor3, size*2);
+  fill(cor1,cor2,cor3, size*4);
   ellipse(this.position.x,this.position.y, 18, 18);    
   // If we need to draw a line
   if (other) 
