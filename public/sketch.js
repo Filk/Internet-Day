@@ -119,10 +119,10 @@ function draw()
 //receives things from other users
 function newDrawing(data)
 {
-  if (amplitude.getLevel()>0.2)
+  if (data.d>10)
   {
-    fill(0);
-    stroke(0);
+    fill(0,data.d);
+    stroke(0,data.d);
     ellipse(data.x,data.y,15,15);
     var xTemp=data.x;
     var yTemp=data.y;
