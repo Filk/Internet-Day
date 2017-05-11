@@ -16,8 +16,6 @@ var amplitude;
 
 var socket;
 
-var retorno=true;
-
 function setup() 
 {
   var xx = windowWidth;
@@ -118,50 +116,18 @@ function draw()
 //receives things from other users
 function newDrawing(data)
 {
-  if (data.e && retorno)
+  if (data.e)
   {
     next = 0;
     painting = true;
-    previous.x = touchX;
-    previous.y = touchY;
+    previous.x = data.x;
+    previous.y = data.y;
     paths.push(new Path());
-    retorno=false;
-  }
-    // If it's time for a new point
-  if (millis() > next && painting) {
-
-    // Grab mouse position      
-    current.x = data.x;
-    current.y = data.y;
-
-    // New particle's force is based on mouse movement
-    var force = p5.Vector.sub(current, previous);
-    force.mult(0.05);
-
-    // Add new particle
-    paths[paths.length - 1].add(current, force);
-    
-    // Schedule next circle
-    next = millis() + random(20,100);
-
-    // Store mouse values
-    previous.x = current.x;
-    previous.y = current.y;
-  }
-
-  // Draw all paths
-  for( var i = 0; i < paths.length; i++) {
-    paths[i].update();
-    paths[i].display();
-  }
-  
-  if(ellipsePrincipal)
-  {
-  fill(0,this.lifespan);
-  stroke(0,this.lifespan/2);
-  ellipse(data.x,data.y,15,15);
-  // speed = map(mouseY, 0.1, height, 1.5, 0.5);
-  // somTocado.rate(speed);
+    fill(0);
+    ellipse(400,400,300,300);
+    fill(0,this.lifespan);
+    stroke(0,this.lifespan/2);
+    ellipse(data.x,data.y,15,15);
   }
 }
 
@@ -183,7 +149,6 @@ function touchEnded()
 {
   painting = false;
   ellipsePrincipal=false;
-  retorno=true;
   //stop sound
   //somTocado.stop();
 }
@@ -252,10 +217,10 @@ Particle.prototype.update = function()
 // Draw a line to another
 Particle.prototype.display = function(other) 
 {
-  var level = amplitude.getLevel();
-  var size = map(level, 0, 1, 0, 255);
-  stroke(cor1,cor2, cor3, size*2);
-  fill(cor1,cor2,cor3, size*4);
+  //var level = amplitude.getLevel();
+  //var size = map(level, 0, 1, 0, 255);
+  stroke(cor1,cor2, cor3, 50*2);
+  fill(cor1,cor2,cor3, 50*4);
   ellipse(this.position.x,this.position.y, 18, 18);    
   // If we need to draw a line
   if (other) 
