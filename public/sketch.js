@@ -108,42 +108,44 @@ function draw()
 //receives things from other users
 function newDrawing(data)
 {
-    // If it's time for a new point
-  if (millis() > next && painting) {
+  fill(0);
+  ellipse(data.x, data.y, 100,100);
+  //   // If it's time for a new point
+  // if (millis() > next && painting) {
 
-    // Grab mouse position      
-    current.x = data.x;
-    current.y = data.y;
+  //   // Grab mouse position      
+  //   current.x = data.x;
+  //   current.y = data.y;
 
-    // New particle's force is based on mouse movement
-    var force = p5.Vector.sub(current, previous);
-    force.mult(0.05);
+  //   // New particle's force is based on mouse movement
+  //   var force = p5.Vector.sub(current, previous);
+  //   force.mult(0.05);
 
-    // Add new particle
-    paths[paths.length - 1].add(current, force);
+  //   // Add new particle
+  //   paths[paths.length - 1].add(current, force);
     
-    // Schedule next circle
-    next = millis() + random(20,100);
+  //   // Schedule next circle
+  //   next = millis() + random(20,100);
 
-    // Store mouse values
-    previous.x = current.x;
-    previous.y = current.y;
-  }
+  //   // Store mouse values
+  //   previous.x = current.x;
+  //   previous.y = current.y;
+  // }
 
-  // Draw all paths
-  for( var i = 0; i < paths.length; i++) {
-    paths[i].update();
-    paths[i].display();
-  }
+  // // Draw all paths
+  // for( var i = 0; i < paths.length; i++) {
+  //   paths[i].update();
+  //   paths[i].display();
+  // }
   
-  if(ellipsePrincipal)
-  {
-  fill(0,100);
-  stroke(0,100);
-  ellipse(data.x,data.y,15,15);
-  // speed = map(mouseY, 0.1, height, 1.5, 0.5);
-  // somTocado.rate(speed);
-  }
+  // if(ellipsePrincipal)
+  // {
+  // fill(0,100);
+  // stroke(0,100);
+  // ellipse(data.x,data.y,15,15);
+  // // speed = map(mouseY, 0.1, height, 1.5, 0.5);
+  // // somTocado.rate(speed);
+  // }
 }
 
 // Start it up
