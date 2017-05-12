@@ -141,8 +141,9 @@ function newDrawing(data)
 
 function outroDesenho()
 {
-  stroke(0);
-  line(outroX, outroX, width*0.5, height*0.5);
+  stroke(0, outroD);
+  strokeWeight(1);
+  line(outroX, outroX, random(0,width), height*0.5);
   fill(0, outroD);
   stroke(0, outroD);
   ellipse(outroX,outroY,10,10);
