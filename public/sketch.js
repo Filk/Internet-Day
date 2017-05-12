@@ -135,16 +135,25 @@ function newDrawing(data)
   }
   
   outroD=data.d;
-}
-
-function outroDesenho()
-{
+  
   stroke(0, outroD);
   strokeWeight(1);
   line(posXOutro, height*0.5, outroX, outroY);
   fill(0, outroD);
   stroke(0, outroD);
-  ellipse(outroX,outroY,10,10);
+  var tamanhoElipse = map(outroD,255,0,25,5);
+  ellipse(outroX,outroY,tamanhoElipse,tamanhoElipse);
+}
+
+function outroDesenho()
+{
+  // stroke(0, outroD);
+  // strokeWeight(1);
+  // line(posXOutro, height*0.5, outroX, outroY);
+  // fill(0, outroD);
+  // stroke(0, outroD);
+  // var tamanhoElipse = map(outroD,255,0,25,5);
+  // ellipse(outroX,outroY,tamanhoElipse,tamanhoElipse);
 }
 
 // Start it up
