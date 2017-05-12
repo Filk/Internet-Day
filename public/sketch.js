@@ -63,8 +63,6 @@ function setup() {
 }
 
 function draw() {
-  
-  background(100, 180, 186);
   pauta();
 
   // If it's time for a new point
@@ -96,22 +94,6 @@ function draw() {
   }
   
   sendStuff(touchX, touchY);
-
-  // if (ellipsePrincipal) {
-  //   fill(0, 100);
-  //   stroke(0, 100);
-  //   ellipse(touchX, touchY, 15, 15);
-  //   speed = map(mouseY, 0.1, height, 1.5, 0.5);
-  //   somTocado.rate(speed);
-  // }
-
-  // var data = {
-  //   x: touchX,
-  //   y: touchY,
-  //   e: ellipsePrincipal,
-  //   d: decresce
-  // }
-  // socket.emit('mouse', data);
 }
 
 // //executes this function when receives things from other users
@@ -273,7 +255,11 @@ function windowResized() {
 
 function pauta()
 {
-    stroke(0);
+  if(millis()%250>200)
+  {
+    background(100, 180, 186);
+  }
+  stroke(0);
   strokeWeight(2);
   line(width * 0.11, height * 0.3, width * 0.9, height * 0.31);
   line(width * 0.1, height * 0.36, width * 0.9, height * 0.37);
