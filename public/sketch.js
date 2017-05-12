@@ -124,7 +124,7 @@ function draw() {
   if (ellipsePrincipal) {
     fill(0, 100);
     stroke(0, 100);
-    ellipse(touchX, touchY, 10, 10);
+    ellipse(touchX, touchY, 15, 15);
     speed = map(mouseY, 0.1, height, 1.5, 0.5);
     somTocado.rate(speed);
   }
@@ -148,7 +148,7 @@ function newDrawing(data) {
   if (qualSample === 0) {
     fill(10, 10, 150, data.d);
     stroke(10, 10, 180, data.d);
-    var tamanhoElipse = map(data.d, 255, 0, 45, 2);
+    var tamanhoElipse = map(data.d, 255, 0, 40, 2);
     ellipse(XXX, YYY, tamanhoElipse, tamanhoElipse);
     strokeWeight(1);
     if(data.d>5)
@@ -168,7 +168,7 @@ function newDrawing(data) {
   if (qualSample === 2) {
     fill(244, 164, 66, data.d);
     stroke(244, 164, 86, data.d);
-    var tamanhoQuadrado = map(data.d, 255, 0, 50, 1);
+    var tamanhoQuadrado = map(data.d, 255, 0, 35, 1);
     rect (XXX, YYY, tamanhoQuadrado, tamanhoQuadrado);
     strokeWeight(1);
     if(data.d>5)
@@ -264,7 +264,7 @@ Particle.prototype.display = function(other) {
   var size = map(level, 0, 1, 0, 255);
   stroke(cor1, cor2, cor3, size * 2);
   fill(cor1, cor2, cor3, size * 4);
-  ellipse(this.position.x, this.position.y, 20, 20);
+  ellipse(this.position.x, this.position.y, 30, 30);
   // If we need to draw a line
   if (other) {
     strokeWeight(5);
