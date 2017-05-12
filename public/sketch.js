@@ -136,13 +136,13 @@ function newDrawing(data)
   
   outroD=data.d;
   
-  stroke(0, outroD);
+  stroke(0, data.d);
   strokeWeight(1);
-  line(posXOutro, height*0.5, outroX, outroY);
-  fill(0, outroD);
-  stroke(0, outroD);
+  line(posXOutro, height*0.5, data.x, data.y);
+  fill(0, data.d);
+  stroke(0, data.d);
   var tamanhoElipse = map(outroD,255,0,25,5);
-  ellipse(outroX,outroY,tamanhoElipse,tamanhoElipse);
+  ellipse(data.x,data.y,tamanhoElipse,tamanhoElipse);
 }
 
 function outroDesenho()
