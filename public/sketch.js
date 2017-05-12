@@ -148,18 +148,14 @@ function newDrawing(data) {
   if (qualSample === 0) {
     fill(10, 10, 150, data.d);
     stroke(10, 10, 180, data.d);
-    var tamanhoElipse = map(data.d, 255, 0, 60, 2);
+    var tamanhoElipse = map(data.d, 255, 0, 45, 2);
     ellipse(XXX, YYY, tamanhoElipse, tamanhoElipse);
     strokeWeight(1);
     if(data.d>5)
     {
     stroke(10, 10, 150);
-    }
-    else
-    {
-      stroke(0);
-    }
     line(XXX, YYY,XXX, -10);
+    }
   }
 
   if (qualSample === 1) {
@@ -178,12 +174,8 @@ function newDrawing(data) {
     if(data.d>5)
     {
       stroke(244, 164, 86);
+      line(XXX, YYY,XXX, height+10);
     }
-    else
-    {
-      stroke(0);
-    }
-    line(XXX, YYY,XXX, height+10);
   }
 }
 
