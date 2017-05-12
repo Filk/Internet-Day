@@ -94,6 +94,8 @@ function draw() {
     paths[i].update();
     paths[i].display();
   }
+  
+  sendStuff(touchX, touchY);
 
   // if (ellipsePrincipal) {
   //   fill(0, 100);
@@ -110,17 +112,6 @@ function draw() {
   //   d: decresce
   // }
   // socket.emit('mouse', data);
-}
-
-function sendStuff (xpos, ypos)
-{
-   var data = {
-    x: touchX,
-    y: touchY,
-    e: ellipsePrincipal,
-    d: decresce
-  }
-  socket.emit('mouse', data); 
 }
 
 // //executes this function when receives things from other users
@@ -181,7 +172,7 @@ function touchStarted() {
   paths.push(new Path());
 
   ellipsePrincipal = true;
-  sendStuff(touchX, touchY);
+  //sendStuff(touchX, touchY);
   //play sound
   somTocado.play();
   
@@ -190,6 +181,17 @@ function touchStarted() {
   ellipse(touchX, touchY, 15, 15);
   speed = map(mouseY, 0.1, height, 1.5, 0.5);
   somTocado.rate(speed);
+}
+
+function sendStuff (xpos, ypos)
+{
+   var data = {
+    x: touchX,
+    y: touchY,
+    e: ellipsePrincipal,
+    d: decresce
+  }
+  socket.emit('mouse', data); 
 }
 
 // Stop
