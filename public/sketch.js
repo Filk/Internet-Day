@@ -17,7 +17,7 @@ var toca=false;
 
 var socket;
 
-var outroX, outroY, outroD, outroQ, outroW;
+var outroX, outroY, outroD, posXOutro;
 
 
 function setup() 
@@ -61,6 +61,8 @@ function setup()
     cor2=110;
     cor3=0;
   }
+  
+  posXOutro=random(0,width);
 
   //ip address of server (its know IP from heroku)
   socket= io.connect(window.location.hostname);
@@ -116,9 +118,7 @@ function draw()
     x: touchX,
     y: touchY,
     e: ellipsePrincipal,
-    d: decresce,
-    q: pmouseX,
-    w: pmouseY
+    d: decresce
   }
   socket.emit('mouse',data);
   
@@ -132,8 +132,6 @@ function newDrawing(data)
   {
     outroX=data.x;
     outroY=data.y;
-    outroQ= data.q;
-    outroW=data.w;
   }
   
   outroD=data.d;
@@ -143,7 +141,7 @@ function outroDesenho()
 {
   stroke(0, outroD);
   strokeWeight(1);
-  line(outroX, outroX, random(0,width), height*0.5);
+  line(outroX, outroX, posXOutro, height*0.5);
   fill(0, outroD);
   stroke(0, outroD);
   ellipse(outroX,outroY,10,10);
