@@ -71,10 +71,10 @@ function setup()
 
 function draw() 
 {
-  // fill(100,180,186);
-  // rect(-10,-10,width+10,height+10);
-  
+  if (millis()%200>150)
+  {
   background(100,180,186);
+  }
   
   // If it's time for a new point
   if (millis() > next && painting) {
