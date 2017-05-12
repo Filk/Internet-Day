@@ -121,8 +121,6 @@ function draw()
     d: decresce
   }
   socket.emit('mouse',data);
-  
-  outroDesenho();
 }
 
 //receives things from other users
@@ -143,15 +141,14 @@ function newDrawing(data)
   ellipse(data.x,data.y,tamanhoElipse,tamanhoElipse);
 }
 
-function outroDesenho()
+
+function keyTyped() 
 {
-  // stroke(0, outroD);
-  // strokeWeight(1);
-  // line(posXOutro, height*0.5, outroX, outroY);
-  // fill(0, outroD);
-  // stroke(0, outroD);
-  // var tamanhoElipse = map(outroD,255,0,25,5);
-  // ellipse(outroX,outroY,tamanhoElipse,tamanhoElipse);
+  if (key === 'q') 
+  {
+    var fs = fullscreen();
+    fullscreen(!fs);
+  } 
 }
 
 // Start it up
