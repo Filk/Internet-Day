@@ -255,10 +255,7 @@ function windowResized() {
 
 function pauta()
 {
-  if(millis()%250>200)
-  {
-    background(100, 180, 186);
-  }
+  background(100, 180, 186);
   stroke(0);
   strokeWeight(2);
   line(width * 0.11, height * 0.3, width * 0.9, height * 0.31);
