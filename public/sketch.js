@@ -141,7 +141,7 @@ function outroDesenho()
 {
   stroke(0, outroD);
   strokeWeight(1);
-  line(outroX, outroX, posXOutro, height*0.5);
+  line(posXOutro, height*0.5, outroX, outroY);
   fill(0, outroD);
   stroke(0, outroD);
   ellipse(outroX,outroY,10,10);
