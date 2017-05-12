@@ -152,17 +152,16 @@ function touchStarted() {
   previous.x = touchX;
   previous.y = touchY;
   paths.push(new Path());
-
   ellipsePrincipal = true;
   //sendStuff(touchX, touchY);
   //play sound
   somTocado.play();
   
-  fill(0, 100);
-  stroke(0, 100);
-  ellipse(touchX, touchY, 15, 15);
-  speed = map(mouseY, 0.1, height, 1.5, 0.5);
-  somTocado.rate(speed);
+  // fill(0, 100);
+  // stroke(0, 100);
+  // ellipse(touchX, touchY, 15, 15);
+  // speed = map(touchY, 0.1, height, 1.5, 0.5);
+  // somTocado.rate(speed);
 }
 
 function sendStuff (xpos, ypos)
@@ -280,4 +279,7 @@ function pauta()
   fill(100, 180, 186);
   ellipse(width * 0.79, height * 0.55, 41, 41);
   ellipse(width * 0.19, height * 0.9, 32, 32);
+  
+  speed = map(touchY, 0.1, height, 1.5, 0.5);
+  somTocado.rate(speed);
 }
