@@ -122,8 +122,6 @@ function draw()
   }
   socket.emit('mouse',data);
   
-  //newDrawing(data);
-  
   outroDesenho();
 }
 
@@ -137,21 +135,14 @@ function newDrawing(data)
     outroQ= data.q;
     outroW=data.w;
   }
-
-  if (data.e)
-  {
-    strokeWeight(5);
-  }
-  else
-  {
-    strokeWeight(1); 
-  }
+  
+  outroD=data.d;
 }
 
 function outroDesenho()
 {
   stroke(0);
-  line(outroX, outroX, outroQ, outroW);
+  line(outroX, outroX, width*0.5, height*0.5);
   fill(0, outroD);
   stroke(0, outroD);
   ellipse(outroX,outroY,10,10);
