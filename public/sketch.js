@@ -17,9 +17,6 @@ var toca=false;
 
 var socket;
 
-var outroX, outroY, outroD;
-
-
 function setup() 
 {
   var xx = windowWidth;
@@ -51,7 +48,7 @@ function setup()
   }
   if(qualSample==1)
   {
-    cor1=15;
+    cor1=100;
     cor2=10;
     cor3=100;
   }
@@ -126,14 +123,14 @@ function newDrawing(data)
 {
   if (data.e)
   {
-    outroX=data.x;
-    outroY=data.y;
+    var outroX=data.x;
+    var outroY=data.y;
   }
   
   fill(10,10,150, data.d);
   stroke(10,10,180, data.d);
   var tamanhoElipse = map(data.d,255,0,60,2);
-  ellipse(data.x,data.y,tamanhoElipse,tamanhoElipse);
+  ellipse(outroX,outroY,tamanhoElipse,tamanhoElipse);
 }
 
 
