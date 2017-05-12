@@ -59,39 +59,53 @@ function setup() {
 
   //ip address of server (its know IP from heroku)
   socket = io.connect(window.location.hostname);
-  socket.on('mouse', newDrawing);
+  socket.on('mouse', 
+    function (data) {
+    if (data.e) {
+      XXX = data.x;
+      YYY = data.y;
+    }
+  
+    if (qualSample === 0) {
+      fill(10, 10, 150, data.d);
+      stroke(10, 10, 180, data.d);
+      var tamanhoElipse = map(data.d, 255, 0, 40, 2);
+      ellipse(XXX, YYY, tamanhoElipse, tamanhoElipse);
+      strokeWeight(1);
+      if(data.d>5)
+      {
+      stroke(10, 10, 150);
+      line(XXX, YYY,XXX, -10);
+      }
+    }
+  
+    if (qualSample === 1) {
+      fill(244,244,66, data.d);
+      stroke(244,244,86, data.d);
+      var tamanhoTriangle = map(data.d, 255, 0, 40, 2);
+      triangle(XXX, YYY, XXX+tamanhoTriangle, YYY,XXX+(tamanhoTriangle*0.5),YYY+tamanhoTriangle );
+    }
+  
+    if (qualSample === 2) {
+      fill(244, 164, 66, data.d);
+      stroke(244, 164, 86, data.d);
+      var tamanhoQuadrado = map(data.d, 255, 0, 35, 1);
+      rect (XXX, YYY, tamanhoQuadrado, tamanhoQuadrado);
+      strokeWeight(1);
+      if(data.d>5)
+      {
+        stroke(244, 164, 86);
+        line(XXX, YYY,XXX, height+10);
+      }
+    }
+  }
+  );
 }
 
 function draw() {
   if (millis() % 550 > 500) {
     background(100, 180, 186);
   }
-
-  stroke(0);
-  strokeWeight(2);
-  line(width * 0.11, height * 0.3, width * 0.9, height * 0.31);
-  line(width * 0.1, height * 0.36, width * 0.9, height * 0.37);
-  line(width * 0.1, height * 0.42, width * 0.9, height * 0.43);
-
-  line(width * 0.15, height * 0.71, width * 0.9, height * 0.70);
-  line(width * 0.15, height * 0.77, width * 0.9, height * 0.76);
-  line(width * 0.14, height * 0.83, width * 0.9, height * 0.82);
-
-  fill(0);
-  rect(width * 0.49, height * 0.5, 50, 50);
-  stroke(0);
-  strokeWeight(1);
-  line(width * 0.49, height * 0.5, width * 0.49, height + 10);
-
-  ellipse(width * 0.29, height * 0.34, 17, 17);
-  line(width * 0.29, 0, width * 0.29, height * 0.34);
-  ellipse(width * 0.32, height * 0.74, 21, 21);
-  line(width * 0.32, 0, width * 0.32, height * 0.74);
-
-  fill(100, 180, 186);
-  ellipse(width * 0.79, height * 0.55, 41, 41);
-  ellipse(width * 0.19, height * 0.9, 32, 32);
-
 
   // If it's time for a new point
   if (millis() > next && painting) {
@@ -121,63 +135,74 @@ function draw() {
     paths[i].display();
   }
 
-  if (ellipsePrincipal) {
-    fill(0, 100);
-    stroke(0, 100);
-    ellipse(touchX, touchY, 15, 15);
-    speed = map(mouseY, 0.1, height, 1.5, 0.5);
-    somTocado.rate(speed);
-  }
+  // if (ellipsePrincipal) {
+  //   fill(0, 100);
+  //   stroke(0, 100);
+  //   ellipse(touchX, touchY, 15, 15);
+  //   speed = map(mouseY, 0.1, height, 1.5, 0.5);
+  //   somTocado.rate(speed);
+  // }
 
-  var data = {
+  // var data = {
+  //   x: touchX,
+  //   y: touchY,
+  //   e: ellipsePrincipal,
+  //   d: decresce
+  // }
+  // socket.emit('mouse', data);
+}
+
+function sendStuff (xpos, ypos)
+{
+   var data = {
     x: touchX,
     y: touchY,
     e: ellipsePrincipal,
     d: decresce
   }
-  socket.emit('mouse', data);
+  socket.emit('mouse', data); 
 }
 
-//executes this function when receives things from other users
-function newDrawing(data) {
-  if (data.e) {
-    XXX = data.x;
-    YYY = data.y;
-  }
+// //executes this function when receives things from other users
+// function newDrawing(data) {
+//   if (data.e) {
+//     XXX = data.x;
+//     YYY = data.y;
+//   }
 
-  if (qualSample === 0) {
-    fill(10, 10, 150, data.d);
-    stroke(10, 10, 180, data.d);
-    var tamanhoElipse = map(data.d, 255, 0, 40, 2);
-    ellipse(XXX, YYY, tamanhoElipse, tamanhoElipse);
-    strokeWeight(1);
-    if(data.d>5)
-    {
-    stroke(10, 10, 150);
-    line(XXX, YYY,XXX, -10);
-    }
-  }
+//   if (qualSample === 0) {
+//     fill(10, 10, 150, data.d);
+//     stroke(10, 10, 180, data.d);
+//     var tamanhoElipse = map(data.d, 255, 0, 40, 2);
+//     ellipse(XXX, YYY, tamanhoElipse, tamanhoElipse);
+//     strokeWeight(1);
+//     if(data.d>5)
+//     {
+//     stroke(10, 10, 150);
+//     line(XXX, YYY,XXX, -10);
+//     }
+//   }
 
-  if (qualSample === 1) {
-    fill(244,244,66, data.d);
-    stroke(244,244,86, data.d);
-    var tamanhoTriangle = map(data.d, 255, 0, 40, 2);
-    triangle(XXX, YYY, XXX+tamanhoTriangle, YYY,XXX+(tamanhoTriangle*0.5),YYY+tamanhoTriangle );
-  }
+//   if (qualSample === 1) {
+//     fill(244,244,66, data.d);
+//     stroke(244,244,86, data.d);
+//     var tamanhoTriangle = map(data.d, 255, 0, 40, 2);
+//     triangle(XXX, YYY, XXX+tamanhoTriangle, YYY,XXX+(tamanhoTriangle*0.5),YYY+tamanhoTriangle );
+//   }
 
-  if (qualSample === 2) {
-    fill(244, 164, 66, data.d);
-    stroke(244, 164, 86, data.d);
-    var tamanhoQuadrado = map(data.d, 255, 0, 35, 1);
-    rect (XXX, YYY, tamanhoQuadrado, tamanhoQuadrado);
-    strokeWeight(1);
-    if(data.d>5)
-    {
-      stroke(244, 164, 86);
-      line(XXX, YYY,XXX, height+10);
-    }
-  }
-}
+//   if (qualSample === 2) {
+//     fill(244, 164, 66, data.d);
+//     stroke(244, 164, 86, data.d);
+//     var tamanhoQuadrado = map(data.d, 255, 0, 35, 1);
+//     rect (XXX, YYY, tamanhoQuadrado, tamanhoQuadrado);
+//     strokeWeight(1);
+//     if(data.d>5)
+//     {
+//       stroke(244, 164, 86);
+//       line(XXX, YYY,XXX, height+10);
+//     }
+//   }
+// }
 
 
 function keyTyped() {
@@ -196,8 +221,15 @@ function touchStarted() {
   paths.push(new Path());
 
   ellipsePrincipal = true;
+  sendStuff(touchX, touchY);
   //play sound
   somTocado.play();
+  
+    fill(0, 100);
+    stroke(0, 100);
+    ellipse(touchX, touchY, 15, 15);
+    speed = map(mouseY, 0.1, height, 1.5, 0.5);
+    somTocado.rate(speed);
 }
 
 // Stop
@@ -259,6 +291,32 @@ Particle.prototype.update = function() {
 // Draw particle and connect it with a line
 // Draw a line to another
 Particle.prototype.display = function(other) {
+  
+  stroke(0);
+  strokeWeight(2);
+  line(width * 0.11, height * 0.3, width * 0.9, height * 0.31);
+  line(width * 0.1, height * 0.36, width * 0.9, height * 0.37);
+  line(width * 0.1, height * 0.42, width * 0.9, height * 0.43);
+
+  line(width * 0.15, height * 0.71, width * 0.9, height * 0.70);
+  line(width * 0.15, height * 0.77, width * 0.9, height * 0.76);
+  line(width * 0.14, height * 0.83, width * 0.9, height * 0.82);
+
+  fill(0);
+  rect(width * 0.49, height * 0.5, 50, 50);
+  stroke(0);
+  strokeWeight(1);
+  line(width * 0.49, height * 0.5, width * 0.49, height + 10);
+
+  ellipse(width * 0.29, height * 0.34, 17, 17);
+  line(width * 0.29, 0, width * 0.29, height * 0.34);
+  ellipse(width * 0.32, height * 0.74, 21, 21);
+  line(width * 0.32, 0, width * 0.32, height * 0.74);
+
+  fill(100, 180, 186);
+  ellipse(width * 0.79, height * 0.55, 41, 41);
+  ellipse(width * 0.19, height * 0.9, 32, 32);
+  
   decresce = this.lifespan;
   var level = amplitude.getLevel();
   var size = map(level, 0, 1, 0, 255);
