@@ -63,7 +63,7 @@ function setup() {
 }
 
 function draw() {
-  if (millis() % 350 > 300) {
+  if (millis() % 550 > 500) {
     background(100, 180, 186);
   }
 
