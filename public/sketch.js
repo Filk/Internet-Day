@@ -17,7 +17,7 @@ var toca=false;
 
 var socket;
 
-var outroX, outroY, outroD, posXOutro;
+var outroX, outroY, outroD;
 
 
 function setup() 
@@ -61,8 +61,6 @@ function setup()
     cor2=110;
     cor3=0;
   }
-  
-  posXOutro=random(0,width);
 
   //ip address of server (its know IP from heroku)
   socket= io.connect(window.location.hostname);
@@ -71,7 +69,7 @@ function setup()
 
 function draw() 
 {
-  if (millis()%200>150)
+  if (millis()%250>200)
   {
   background(100,180,186);
   }
@@ -130,14 +128,11 @@ function newDrawing(data)
   {
     outroX=data.x;
     outroY=data.y;
-    stroke(0, data.d);
-    strokeWeight(1);
-    line(posXOutro, height*0.5, data.x, data.y);
   }
   
   fill(0, data.d);
   stroke(0, data.d);
-  var tamanhoElipse = map(data.d,255,0,25,5);
+  var tamanhoElipse = map(data.d,255,0,40,2);
   ellipse(data.x,data.y,tamanhoElipse,tamanhoElipse);
 }
 
