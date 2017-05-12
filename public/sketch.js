@@ -17,6 +17,8 @@ var toca=false;
 
 var socket;
 
+var outroX, outroY, outroD, outroQ, outroW;
+
 
 function setup() 
 {
@@ -121,6 +123,8 @@ function draw()
   socket.emit('mouse',data);
   
   //newDrawing(data);
+  
+  outroDesenho();
 }
 
 //receives things from other users
@@ -128,18 +132,12 @@ function newDrawing(data)
 {
   if (data.e)
   {
-    var teuRatoX=data.x;
-    var teuRatoY=data.y;
+    outroX=data.x;
+    outroY=data.y;
+    outroQ= data.q;
+    outroW=data.w;
   }
-  
-  // if (data.d>5)
-  // {
-  //   fill(0);
-  //   stroke(0);
-  //   strokeWeight(2);
-  //   ellipse(teuRatoX,teuRatoY,10,10);
-  // }
-  
+
   if (data.e)
   {
     strokeWeight(5);
@@ -148,12 +146,15 @@ function newDrawing(data)
   {
     strokeWeight(1); 
   }
-  
+}
+
+function outroDesenho()
+{
   stroke(0);
-  line(teuRatoX, teuRatoY, data.q, data.w);
-  fill(0, data.d);
-  stroke(0, data.d);
-  ellipse(teuRatoX,teuRatoY,10,10);
+  line(outroX, outroX, outroQ, outroW);
+  fill(0, outroD);
+  stroke(0, outroD);
+  ellipse(outroX,outroY,10,10);
 }
 
 // Start it up
@@ -245,11 +246,11 @@ Particle.prototype.display = function(other)
   var size = map(level, 0, 1, 0, 255);
   stroke(cor1,cor2, cor3, size*2);
   fill(cor1,cor2,cor3, size*4);
-  ellipse(this.position.x,this.position.y, 15, 15);    
+  ellipse(this.position.x,this.position.y, 20, 20);    
   // If we need to draw a line
   if (other) 
   {
-    strokeWeight(1);
+    strokeWeight(5);
     line(this.position.x, this.position.y, other.position.x, other.position.y);
   }
 }
