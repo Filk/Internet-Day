@@ -78,7 +78,7 @@ function draw() {
   line(width * 0.14, height * 0.83, width * 0.9, height * 0.82);
 
   fill(0);
-  rect(width * 0.49, height * 0.5, 20, 20);
+  rect(width * 0.49, height * 0.5, 50, 50);
   stroke(0);
   strokeWeight(1);
   line(width * 0.49, height * 0.5, width * 0.49, height + 10);
@@ -151,14 +151,21 @@ function newDrawing(data) {
     var tamanhoElipse = map(data.d, 255, 0, 60, 2);
     ellipse(XXX, YYY, tamanhoElipse, tamanhoElipse);
     strokeWeight(1);
+    if(data.d>5)
+    {
     stroke(10, 10, 150);
+    }
+    else
+    {
+      stroke(0);
+    }
     line(XXX, YYY,XXX, -10);
   }
 
   if (qualSample === 1) {
     fill(244,244,66, data.d);
     stroke(244,244,86, data.d);
-    var tamanhoTriangle = map(data.d, 255, 0, 30, 2);
+    var tamanhoTriangle = map(data.d, 255, 0, 40, 2);
     triangle(XXX, YYY, XXX+tamanhoTriangle, YYY,XXX+(tamanhoTriangle*0.5),YYY+tamanhoTriangle );
   }
 
@@ -168,7 +175,14 @@ function newDrawing(data) {
     var tamanhoQuadrado = map(data.d, 255, 0, 50, 1);
     rect (XXX, YYY, tamanhoQuadrado, tamanhoQuadrado);
     strokeWeight(1);
-    stroke(244, 164, 86);
+    if(data.d>5)
+    {
+      stroke(244, 164, 86);
+    }
+    else
+    {
+      stroke(0);
+    }
     line(XXX, YYY,XXX, height+10);
   }
 }
