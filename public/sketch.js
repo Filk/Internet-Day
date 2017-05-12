@@ -139,7 +139,7 @@ function newDrawing(data)
   
   fill(0, data.d);
   stroke(0, data.d);
-  var tamanhoElipse = map(outroD,255,0,25,5);
+  var tamanhoElipse = map(data.d,255,0,25,5);
   ellipse(data.x,data.y,tamanhoElipse,tamanhoElipse);
 }
 
