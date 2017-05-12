@@ -280,6 +280,9 @@ function pauta()
   ellipse(width * 0.79, height * 0.55, 41, 41);
   ellipse(width * 0.19, height * 0.9, 32, 32);
   
+  if(ellipsePrincipal)
+  {
   speed = map(touchY, 0.1, height, 1.5, 0.5);
   somTocado.rate(speed);
+  }
 }
