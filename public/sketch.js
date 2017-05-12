@@ -130,8 +130,8 @@ function newDrawing(data)
     outroY=data.y;
   }
   
-  fill(0, data.d);
-  stroke(0, data.d);
+  fill(10,10,150, data.d);
+  stroke(10,10,180, data.d);
   var tamanhoElipse = map(data.d,255,0,40,2);
   ellipse(data.x,data.y,tamanhoElipse,tamanhoElipse);
 }
