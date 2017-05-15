@@ -11,13 +11,18 @@ var previous;
 var ellipsePrincipal = false;
 var cor1, cor2, cor3;
 var qualSample;
-var somTocado, somEscolhido, arraySom, som0, som1, som2, speed;
+var somTocado, somEscolhido, arraySom, som0, som1, som2, speed, fundo;
 var amplitude, decresce;
 var toca = false;
 
 var socket;
 
 var XXX, YYY;
+
+function preload ()
+{
+  fundo = loadSound('data/fundo.mp3');
+}
 
 function setup() {
   var xx = windowWidth;
@@ -38,6 +43,8 @@ function setup() {
   somTocado.setLoop(false);
   somTocado.setVolume(1.0);
   speed = 1;
+  fundo.setVolume(0.6);
+  fundo.play();
   amplitude = new p5.Amplitude();
 
   //chooses a random color for the ellipse
