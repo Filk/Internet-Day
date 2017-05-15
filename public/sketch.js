@@ -44,6 +44,7 @@ function setup() {
   somTocado.setVolume(1.0);
   speed = 1;
   fundo.setVolume(0.6);
+  fundo.setLoop(true);
   fundo.play();
   amplitude = new p5.Amplitude();
 
